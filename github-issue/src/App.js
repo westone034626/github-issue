@@ -1,10 +1,10 @@
 import './App.css';
-import { Button } from 'antd';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <Button type="primary">Button</Button>
+      <Header message="ISSUES" />
     </div>
   );
 }
