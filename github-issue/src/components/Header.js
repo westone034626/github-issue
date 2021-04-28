@@ -17,11 +17,11 @@ const HeaderContent = styled.p`
   font-weight: bold;
 `;
 
-const Header = ({ message }) => {
+const Header = ({ message, iconName }) => {
   return (
     <HeaderWrapper>
       <HeaderContent>
-        {Icon('Book')}
+        {Icon(iconName)}
         {message}
       </HeaderContent>
     </HeaderWrapper>

@@ -1,9 +1,13 @@
-import { BookOutlined } from '@ant-design/icons';
+import { BookOutlined, TagOutlined, TagsOutlined } from '@ant-design/icons';
 
 const Icon = (iconName) => {
   switch (iconName) {
-    case 'Book':
+    case 'book':
       return <BookOutlined />;
+    case 'label':
+      return <TagOutlined />;
+    case 'mileStone':
+      return <TagsOutlined />;
     default:
       break;
   }
