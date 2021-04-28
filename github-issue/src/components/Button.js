@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Icon from '../icons';
 
 const ButtonWrapper = styled.div`
-  display: flex;
+  display: inline-flex;
+  //   ref: https://stackoverflow.com/questions/37300614/how-to-adapt-a-flex-divs-width-to-content
   justify-content: center;
   align-items: center;
-  width: 100px;
   background-color: ${(props) => props.buttonColor};
-  padding: 5px 0 5px 0;
+  padding: 5px 10px 5px 10px;
   border: 1px solid black;
 `;
 
