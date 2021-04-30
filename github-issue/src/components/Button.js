@@ -17,9 +17,9 @@ const ButtonContent = styled.p`
   font-weight: bold;
 `;
 
-const Button = ({ message, buttonColor, fontColor, iconName }) => {
+const Button = ({ message, buttonColor, fontColor, iconName, onClick }) => {
   return (
-    <ButtonWrapper buttonColor={buttonColor}>
+    <ButtonWrapper buttonColor={buttonColor} onClick={onClick}>
       <ButtonContent fontColor={fontColor}>
         {Icon(iconName)}
         {message}
