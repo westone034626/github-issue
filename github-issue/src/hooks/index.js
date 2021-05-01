@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 
 export const useToggle = (initialState) => {
   const [state, setState] = useState(initialState);
-  const toggle = () => {
-    setState(state === 'labels' ? 'mileStones' : 'labels');
+  const toggle = (value) => {
+    setState(value);
   };
   return [state, toggle];
 };

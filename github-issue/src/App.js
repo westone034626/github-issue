@@ -21,7 +21,7 @@ function App() {
         buttonColor="blue"
         iconName="label"
         onClick={() => {
-          onBtnClick(currentTab);
+          onBtnClick('labels');
         }}
       />
       <Button
@@ -30,7 +30,7 @@ function App() {
         buttonColor="white"
         iconName="mileStone"
         onClick={() => {
-          onBtnClick(currentTab);
+          onBtnClick('mileStones');
         }}
       />
       <Button message="New label" fontColor="white" buttonColor="green" />
