@@ -1,13 +1,5 @@
 import { useState, useEffect } from 'react';
 
-export const useToggle = (initialState) => {
-  const [state, setState] = useState(initialState);
-  const toggle = (value) => {
-    setState(value);
-  };
-  return [state, toggle];
-};
-
 export const useFetchData = (url) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);

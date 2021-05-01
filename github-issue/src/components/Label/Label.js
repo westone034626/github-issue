@@ -6,7 +6,6 @@ const LabelWrapper = styled.div`
   align-items: center;
   background-color: ${(props) => props.buttonColor};
   padding: 3px 7px 3px 7px;
-  border-radius: 15%;
 `;
 
 const LabelContent = styled.p`
