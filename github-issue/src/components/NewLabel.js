@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Label from './Label/Label';
 import { usePostData } from '../hooks';
+import Icon from '../icons';
+import { useState, useRef } from 'react';
 
 const NewLabelWrapper = styled.div`
   display: flex;
@@ -15,9 +17,24 @@ const NewLabelWrapper = styled.div`
 `;
 
 const NewLabel = () => {
+  const [color, setColor] = useState('black');
+  const colorInputEl = useRef(null);
+  const getRandomColor = () => {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+  const onColorRefreshButtonClick = () => {
+    const newColor = getRandomColor();
+    setColor(() => newColor);
+    colorInputEl.current.value = newColor;
+  };
   return (
     <NewLabelWrapper>
-      <Label />
+      <Label buttonColor={color} />
       <form style={{ width: '100%', marginTop: '25px' }}>
         <div
           style={{
@@ -65,8 +82,23 @@ const NewLabel = () => {
                 width: '100%',
               }}
             >
-              <button style={{ width: '15%', height: '27px' }} />
-              <input type="color" style={{ width: '80%', height: '27px' }} />
+              <button
+                style={{ width: '27px', height: '27px' }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onColorRefreshButtonClick();
+                }}
+              >
+                {Icon('refresh')}
+              </button>
+              <input
+                ref={colorInputEl}
+                type="color"
+                style={{ width: '85%', height: '27px' }}
+                onChange={(e) => {
+                  setColor(() => e.target.value);
+                }}
+              />
             </div>
           </div>
           <div>
