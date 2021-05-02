@@ -11,7 +11,7 @@ const ScreenChanger = styled.div`
   display: flex;
 `;
 
-const Controller = ({ onClick, itemName }) => {
+const Controller = ({ itemName, onTabClick, onNewBtnClick }) => {
   return (
     <ControllerWrapper>
       <ScreenChanger>
@@ -20,14 +20,14 @@ const Controller = ({ onClick, itemName }) => {
           fontColor="white"
           buttonColor="blue"
           iconName="label"
-          onClick={() => onClick('labels')}
+          onClick={() => onTabClick('labels')}
         />
         <Button
           message="Milestones"
           fontColor="black"
           buttonColor="white"
           iconName="mileStone"
-          onClick={() => onClick('mileStones')}
+          onClick={() => onTabClick('mileStones')}
         />
       </ScreenChanger>
 
@@ -35,6 +35,9 @@ const Controller = ({ onClick, itemName }) => {
         message={`New ${itemName}`}
         fontColor="white"
         buttonColor="green"
+        onClick={() => {
+          onNewBtnClick();
+        }}
       />
     </ControllerWrapper>
   );
