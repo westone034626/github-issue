@@ -36,7 +36,7 @@ const NewLabel = () => {
             }}
           >
             <p>label name</p>
-            <input style={{ width: '100%' }} />
+            <input style={{ width: '100%', height: '27px' }} />
           </div>
           <div
             style={{
@@ -47,7 +47,7 @@ const NewLabel = () => {
             }}
           >
             <p>description</p>
-            <input style={{ width: '100%' }} />
+            <input style={{ width: '100%', height: '27px' }} />
           </div>
           <div
             style={{
@@ -58,7 +58,16 @@ const NewLabel = () => {
             }}
           >
             <p>color</p>
-            <input style={{ width: '100%' }} />
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}
+            >
+              <button style={{ width: '15%', height: '27px' }} />
+              <input type="color" style={{ width: '80%', height: '27px' }} />
+            </div>
           </div>
           <div>
             <button>cancel</button>
