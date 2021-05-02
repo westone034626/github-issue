@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Label from './Label/Label';
+import { usePostData } from '../hooks';
 
 const NewLabelWrapper = styled.div`
   display: flex;

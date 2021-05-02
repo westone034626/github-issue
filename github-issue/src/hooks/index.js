@@ -24,3 +24,17 @@ export const useFetchData = (url) => {
   }, [url]);
   return [data, isLoading];
 };
+
+export const usePostData = (url, data) => {
+  const [isLoading, setIsLoading] = useState(true);
+  return {
+    pending: isLoading,
+    run: fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false)),
+  };
+};
