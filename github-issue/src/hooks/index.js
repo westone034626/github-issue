@@ -8,21 +8,22 @@ export const useToggle = (initialState = false) => {
   return [state, toggle];
 };
 
-export const useFetchData = (url) => {
+export const useFetchData = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
+  return {
+    data,
+    pending: isLoading,
+    run: (url) => {
+      setIsLoading(true);
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          setData(data);
+          setData(data.reverse());
         })
         .finally(() => setIsLoading(false));
-    }, 1000);
-  }, [url]);
-  return [data, isLoading];
+    },
+  };
 };
 
 export const usePostData = () => {
@@ -32,7 +33,7 @@ export const usePostData = () => {
     pending: isLoading,
     error,
     run: (url, data) => {
-      setIsLoading(false);
+      setIsLoading(true);
       fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
