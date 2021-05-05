@@ -6,20 +6,12 @@ import Loading from './Loading';
 const Content = ({ tab }) => {
   const REQUEST_URL = `http://localhost:3001/${tab}`;
   const [data, isLoading] = useFetchData(REQUEST_URL);
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <>
-      {isLoading ? (
-        <Loading /> // Would implement a loading component later.
-      ) : (
-        <>
-          <Counter count={data.length} itemName="labels" />
-          {tab === 'labels' ? (
-            <LabelItemList labelList={data} />
-          ) : (
-            'Milestone page'
-          )}
-        </>
-      )}
+      <Counter count={data.length} itemName="labels" />
+      {tab === 'labels' ? <LabelItemList labelList={data} /> : 'Milestone page'}
     </>
   );
 };
