@@ -3,19 +3,17 @@ import Counter from '../components/Counter';
 import { useFetchData } from '../hooks';
 import Loading from './Loading';
 import { useEffect } from 'react';
-import NewLabel from './NewLabel';
+import LabelEditor from './LabelEditor';
 
 const Content = ({ tab, isNewBtnClick }) => {
   const REQUEST_URL = `http://localhost:3001/${tab}`;
-  const { data, pending, run } = useFetchData();
+  const { data, pending, run: fetchData } = useFetchData();
   useEffect(() => {
-    run(REQUEST_URL);
+    fetchData(REQUEST_URL);
   }, [REQUEST_URL]);
   return (
     <>
-      {isNewBtnClick && (
-        <NewLabel url={REQUEST_URL} onCreateButtonClick={run} />
-      )}
+      {isNewBtnClick && <LabelEditor url={REQUEST_URL} onSubmit={fetchData} />}
       {pending ? (
         <Loading /> // Would implement a loading component later.
       ) : (
