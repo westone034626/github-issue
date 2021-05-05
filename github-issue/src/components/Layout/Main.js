@@ -1,7 +1,7 @@
-import Controller from './Controller';
-import Content from '../components/Content';
+import Controller from '../Controller';
+import Content from '../Content';
 import { useState } from 'react';
-import { useToggle } from '../hooks';
+import { useToggle } from '../../hooks';
 import styled from 'styled-components';
 
 const MainWrapper = styled.div`

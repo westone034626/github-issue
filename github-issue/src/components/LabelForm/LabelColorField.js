@@ -1,4 +1,4 @@
-import Icon from '../icons';
+import Icon from '../../icons';
 const LabelColorField = ({ label, data, onClick, onChange }) => (
   <div
     style={{

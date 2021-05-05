@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Icon from '../icons';
+import Icon from '../../icons';
 
 const HeaderWrapper = styled.div`
   display: flex;

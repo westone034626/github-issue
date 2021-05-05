@@ -1,6 +1,6 @@
-import { getRandomColor } from '../utils';
+import { getRandomColor } from '../../utils';
 import styled from 'styled-components';
-import { usePostData } from '../hooks';
+import { usePostData } from '../../hooks';
 import { useState } from 'react';
 import LabelInputField from './LabelInputField';
 import LabelColorField from './LabelColorField';

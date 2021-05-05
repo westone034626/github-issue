@@ -3,7 +3,7 @@ import Counter from '../components/Counter';
 import { useFetchData } from '../hooks';
 import Loading from './Loading';
 import { useEffect } from 'react';
-import LabelEditor from './LabelEditor';
+import LabelEditor from './LabelForm/LabelEditor';
 
 const Content = ({ tab, isNewBtnClick }) => {
   const REQUEST_URL = `http://localhost:3001/${tab}`;

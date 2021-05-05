@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Label from './Label/Label';
+import Label from '../Label/Label';
 import { useState } from 'react';
 import LabelFormField from './LabelFormField';
 const LabelEditorWrapper = styled.div`
