@@ -45,3 +45,21 @@ export const usePostData = () => {
     },
   };
 };
+
+export const useDeleteData = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
+  return {
+    pending: isLoading,
+    error,
+    run: (url, id) => {
+      setIsLoading(true);
+      fetch(url + `/${id}`, {
+        method: 'DELETE',
+      })
+        .then((response) => console.log(response))
+        .catch((err) => setError(err))
+        .finally(() => setIsLoading(false));
+    },
+  };
+};
