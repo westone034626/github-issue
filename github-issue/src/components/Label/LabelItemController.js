@@ -4,11 +4,18 @@ const LabelItemControllerWrapper = styled.div`
   display: flex;
 `;
 
-const LabelItemController = () => {
+const LabelItemController = ({ onDeleteBtnClick }) => {
   return (
     <LabelItemControllerWrapper>
       <button>Edit</button>
-      <button style={{ marginLeft: '5px' }}>Delete</button>
+      <button
+        onClick={() => {
+          onDeleteBtnClick();
+        }}
+        style={{ marginLeft: '5px' }}
+      >
+        Delete
+      </button>
     </LabelItemControllerWrapper>
   );
 };

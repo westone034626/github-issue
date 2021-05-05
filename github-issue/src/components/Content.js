@@ -1,6 +1,6 @@
 import LabelItemList from '../components/Label/LabelItemList';
 import Counter from '../components/Counter';
-import { useFetchData } from '../hooks';
+import { useDeleteData, useFetchData } from '../hooks';
 import Loading from './Loading';
 import { useEffect } from 'react';
 import LabelEditor from './LabelForm/LabelEditor';
@@ -8,6 +8,7 @@ import LabelEditor from './LabelForm/LabelEditor';
 const Content = ({ tab, isNewBtnClick }) => {
   const REQUEST_URL = `http://localhost:3001/${tab}`;
   const { data, pending, run: fetchData } = useFetchData();
+  const { loading, error, run: deleteData } = useDeleteData();
   useEffect(() => {
     fetchData(REQUEST_URL);
   }, [REQUEST_URL]);
@@ -20,7 +21,11 @@ const Content = ({ tab, isNewBtnClick }) => {
         <>
           <Counter count={data.length} itemName={tab} />
           {tab === 'labels' ? (
-            <LabelItemList labelList={data} />
+            <LabelItemList
+              labelList={data}
+              onDelete={{ del: deleteData, refresh: fetchData }}
+              url={REQUEST_URL}
+            />
           ) : (
             'Milestone page'
           )}

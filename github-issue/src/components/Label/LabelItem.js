@@ -19,7 +19,13 @@ const LabelItemSubWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const LabelItem = ({ message, labelName, buttonColor, fontColor }) => {
+const LabelItem = ({
+  message,
+  labelName,
+  buttonColor,
+  fontColor,
+  onDeleteBtnClick,
+}) => {
   return (
     <LabelItemWrapper>
       <Label
@@ -29,7 +35,7 @@ const LabelItem = ({ message, labelName, buttonColor, fontColor }) => {
       />
       <LabelItemSubWrapper>
         <LabelDesc message={message} />
-        <LabelItemController />
+        <LabelItemController onDeleteBtnClick={onDeleteBtnClick} />
       </LabelItemSubWrapper>
     </LabelItemWrapper>
   );

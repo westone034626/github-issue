@@ -1,6 +1,6 @@
 import LabelItem from './LabelItem';
 
-const LabelItemList = ({ labelList }) => {
+const LabelItemList = ({ labelList, onDelete, url }) => {
   return (
     <>
       {labelList.map((item, idx) => (
@@ -10,6 +10,10 @@ const LabelItemList = ({ labelList }) => {
           labelName={item.name}
           fontColor="white"
           buttonColor={item.color}
+          onDeleteBtnClick={async () => {
+            await onDelete.del(url, item.id);
+            await onDelete.refresh(url);
+          }}
         />
       ))}
     </>
