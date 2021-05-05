@@ -14,7 +14,7 @@ const Main = () => {
     <MainWrapper>
       <Controller
         itemName={currentTab}
-        onClick={setCurrentTab}
+        onTabClick={setCurrentTab}
         onNewBtnClick={setIsNewBtnClick}
       />
       <Content tab={currentTab} isNewBtnClick={isNewBtnClick} />

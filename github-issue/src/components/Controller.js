@@ -11,9 +11,9 @@ const ScreenChanger = styled.div`
   display: flex;
 `;
 
-const Controller = ({ itemName, onClick, onNewBtnClick }) => {
+const Controller = ({ itemName, onTabClick, onNewBtnClick }) => {
   const onBtnClick = (e) =>
-    onClick(
+    onTabClick(
       e.currentTarget.querySelector('#buttonValue').innerHTML.toLowerCase()
     );
   // 'currentTarget' ref: https://www.carlrippon.com/event-target-v-current-target/
