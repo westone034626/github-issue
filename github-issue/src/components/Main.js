@@ -3,7 +3,6 @@ import Content from '../components/Content';
 import { useState } from 'react';
 import { useToggle } from '../hooks';
 import styled from 'styled-components';
-import NewLabel from './NewLabel';
 
 const MainWrapper = styled.div`
   padding: 25px;
@@ -18,8 +17,7 @@ const Main = () => {
         onTabClick={setCurrentTab}
         onNewBtnClick={setIsNewBtnClick}
       />
-      {isNewBtnClick && <NewLabel />}
-      <Content tab={currentTab} />
+      <Content tab={currentTab} isNewBtnClick={isNewBtnClick} />
     </MainWrapper>
   );
 };
