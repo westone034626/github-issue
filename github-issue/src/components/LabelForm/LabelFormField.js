@@ -18,9 +18,9 @@ const LabelFormWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const LabelFormField = ({ url, onSubmit, name, setName, color, setColor }) => {
+const LabelFormField = ({ onSubmit, name, setName, color, setColor }) => {
+  const { url, post, refresh } = onSubmit;
   const [description, setDescription] = useState('');
-  const { pending, error, run: postLabel } = usePostData();
   const resetFormField = () => {
     setName(() => '');
     setDescription(() => '');
@@ -74,9 +74,9 @@ const LabelFormField = ({ url, onSubmit, name, setName, color, setColor }) => {
             }}
             onClick={async (e) => {
               e.preventDefault();
-              await postLabel(url, { name, description, color });
+              await post(url, { name, description, color });
               resetFormField();
-              await onSubmit(url);
+              await refresh(url);
             }}
           />
         </div>

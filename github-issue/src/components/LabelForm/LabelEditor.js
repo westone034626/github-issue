@@ -14,7 +14,7 @@ const LabelEditorWrapper = styled.div`
   padding: 10px 10px 10px 10px;
 `;
 
-const LabelEditor = ({ url, onSubmit }) => {
+const LabelEditor = ({ onSubmit }) => {
   const [previewLabelName, setPreviewLabelName] = useState('');
   const [previewColor, setPreviewColor] = useState('black');
   return (
@@ -24,7 +24,6 @@ const LabelEditor = ({ url, onSubmit }) => {
         buttonColor={previewColor}
       />
       <LabelFormField
-        url={url}
         onSubmit={onSubmit}
         name={previewLabelName}
         setName={setPreviewLabelName}
