@@ -10,10 +10,7 @@ const Main = () => {
   const [currentTab, setCurrentTab] = useState('labels');
   return (
     <MainWrapper>
-      <Controller
-        itemName={currentTab === 'labels' ? 'label' : 'milestone'}
-        onClick={setCurrentTab}
-      />
+      <Controller itemName={currentTab} onClick={setCurrentTab} />
       <Content tab={currentTab} />
     </MainWrapper>
   );

@@ -10,7 +10,7 @@ const Content = ({ tab }) => {
     <Loading />
   ) : (
     <>
-      <Counter count={data.length} itemName="labels" />
+      <Counter count={data.length} itemName={tab} />
       {tab === 'labels' ? <LabelItemList labelList={data} /> : 'Milestone page'}
     </>
   );
