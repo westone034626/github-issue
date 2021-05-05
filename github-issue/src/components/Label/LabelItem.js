@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import LabelDesc from './LabelDesc';
 import LabelItemController from './LabelItemController';
 import Label from './Label';
+import { useToggle } from '../../hooks';
+import Modal from '../Modal';
 
 const LabelItemWrapper = styled.div`
   display: flex;
@@ -26,18 +28,28 @@ const LabelItem = ({
   fontColor,
   onDeleteBtnClick,
 }) => {
+  const [isDelBtnClick, setIsDelBtnClick] = useToggle(false);
   return (
-    <LabelItemWrapper>
-      <Label
-        message={labelName}
-        fontColor={fontColor}
-        buttonColor={buttonColor}
-      />
-      <LabelItemSubWrapper>
-        <LabelDesc message={message} />
-        <LabelItemController onDeleteBtnClick={onDeleteBtnClick} />
-      </LabelItemSubWrapper>
-    </LabelItemWrapper>
+    <>
+      {isDelBtnClick && (
+        <Modal
+          msg="정말 삭제하시겠습니까?"
+          onConfirm={onDeleteBtnClick}
+          onCancel={setIsDelBtnClick}
+        />
+      )}
+      <LabelItemWrapper>
+        <Label
+          message={labelName}
+          fontColor={fontColor}
+          buttonColor={buttonColor}
+        />
+        <LabelItemSubWrapper>
+          <LabelDesc message={message} />
+          <LabelItemController onDeleteBtnClick={setIsDelBtnClick} />
+        </LabelItemSubWrapper>
+      </LabelItemWrapper>
+    </>
   );
 };
 
