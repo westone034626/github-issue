@@ -1,10 +1,8 @@
 # github-issue mission
 
-## branch: feature/step1
+## branch: feature/step3
 
-goal: 레이블 목록 띄워주기
+goal: 레이블 삭제 기능, 레이블 수정 기능 구현
 
-남은 to do list
-
-- [ ] label 갯수 보여주기
-- [ ] 코드 리팩토링(모듈 단위로 분리, 반복코드 수정)
+- [ ] 삭제 기능
+- [ ] 수정 기능
