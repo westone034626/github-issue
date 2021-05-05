@@ -13,8 +13,8 @@ const Main = () => {
   return (
     <MainWrapper>
       <Controller
-        itemName={currentTab === 'labels' ? 'label' : 'milestone'}
-        onTabClick={setCurrentTab}
+        itemName={currentTab}
+        onClick={setCurrentTab}
         onNewBtnClick={setIsNewBtnClick}
       />
       <Content tab={currentTab} isNewBtnClick={isNewBtnClick} />

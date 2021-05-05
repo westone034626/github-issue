@@ -18,7 +18,7 @@ const Content = ({ tab, isNewBtnClick }) => {
         <Loading /> // Would implement a loading component later.
       ) : (
         <>
-          <Counter count={data.length} itemName="labels" />
+          <Counter count={data.length} itemName={tab} />
           {tab === 'labels' ? (
             <LabelItemList labelList={data} />
           ) : (
