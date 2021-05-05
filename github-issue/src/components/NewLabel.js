@@ -1,3 +1,4 @@
+import { getRandomColor } from '../utils';
 import styled from 'styled-components';
 import Label from './Label/Label';
 import { usePostData } from '../hooks';
@@ -21,14 +22,6 @@ const NewLabel = ({ url, onCreateButtonClick }) => {
   const [description, setDescription] = useState('');
   const [color, setColor] = useState('black');
   const { pending, error, run } = usePostData();
-  const getRandomColor = () => {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
   const onColorRefreshButtonClick = () => {
     const newColor = getRandomColor();
     setColor(() => newColor);
