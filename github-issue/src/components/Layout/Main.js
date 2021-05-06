@@ -17,7 +17,11 @@ const Main = () => {
         onTabClick={setCurrentTab}
         onNewBtnClick={setIsNewBtnClick}
       />
-      <Content tab={currentTab} isNewBtnClick={isNewBtnClick} />
+      <Content
+        tab={currentTab}
+        isNewBtnClick={isNewBtnClick}
+        onCancelBtnClick={setIsNewBtnClick}
+      />
     </MainWrapper>
   );
 };

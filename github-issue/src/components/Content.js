@@ -5,7 +5,7 @@ import Loading from './Loading';
 import { useEffect } from 'react';
 import LabelEditor from './LabelForm/LabelEditor';
 
-const Content = ({ tab, isNewBtnClick }) => {
+const Content = ({ tab, isNewBtnClick, onCancelBtnClick }) => {
   const REQUEST_URL = `http://localhost:3001/${tab}`;
   const { data, pending, run: fetchData } = useFetchData();
   const { run: deleteData } = useDeleteData();
@@ -18,6 +18,7 @@ const Content = ({ tab, isNewBtnClick }) => {
       {isNewBtnClick && (
         <LabelEditor
           onSubmit={{ url: REQUEST_URL, post: postData, refresh: fetchData }}
+          onCancel={onCancelBtnClick}
         />
       )}
       {pending ? (

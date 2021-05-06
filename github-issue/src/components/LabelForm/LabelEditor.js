@@ -14,7 +14,7 @@ const LabelEditorWrapper = styled.div`
   padding: 10px 10px 10px 10px;
 `;
 
-const LabelEditor = ({ onSubmit }) => {
+const LabelEditor = ({ onSubmit, onCancel }) => {
   const [previewLabelName, setPreviewLabelName] = useState('');
   const [previewColor, setPreviewColor] = useState('black');
   return (
@@ -25,6 +25,7 @@ const LabelEditor = ({ onSubmit }) => {
       />
       <LabelFormField
         onSubmit={onSubmit}
+        onCancel={onCancel}
         name={previewLabelName}
         setName={setPreviewLabelName}
         color={previewColor}

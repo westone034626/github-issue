@@ -18,7 +18,14 @@ const LabelFormWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const LabelFormField = ({ onSubmit, name, setName, color, setColor }) => {
+const LabelFormField = ({
+  onSubmit,
+  onCancel,
+  name,
+  setName,
+  color,
+  setColor,
+}) => {
   const { url, post, refresh } = onSubmit;
   const [description, setDescription] = useState('');
   const resetFormField = () => {
@@ -61,7 +68,7 @@ const LabelFormField = ({ onSubmit, name, setName, color, setColor }) => {
             label="cancel"
             onClick={(e) => {
               e.preventDefault();
-              resetFormField();
+              onCancel();
             }}
             disabled={false}
           />
