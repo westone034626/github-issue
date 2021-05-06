@@ -1,4 +1,4 @@
-const LabelInputField = ({ label, data, onChange }) => (
+const LabelInputField = ({ label, data, onChange, placeHolder }) => (
   <div
     style={{
       display: 'flex',
@@ -12,6 +12,7 @@ const LabelInputField = ({ label, data, onChange }) => (
       value={data}
       onChange={onChange}
       style={{ width: '100%', height: '27px' }}
+      placeholder={placeHolder}
     />
   </div>
 );

@@ -30,14 +30,16 @@ const LabelFormField = ({ onSubmit, name, setName, color, setColor }) => {
     <LabelForm>
       <LabelFormWrapper>
         <LabelInputField
-          label={'label name'}
+          label="Label name"
+          placeHolder="Label name"
           data={name}
           onChange={(e) => {
             setName(e.target.value);
           }}
         />
         <LabelInputField
-          label="description"
+          label="Description"
+          placeHolder="Description (optional)"
           data={description}
           onChange={(e) => {
             setDescription(e.target.value);
