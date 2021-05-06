@@ -46,6 +46,7 @@ export const usePostData = () => {
   };
 };
 
+// ref: https://stackoverflow.com/questions/40284338/javascript-fetch-delete-and-put-requests
 export const useDeleteData = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
@@ -56,6 +57,29 @@ export const useDeleteData = () => {
       setIsLoading(true);
       fetch(url + `/${id}`, {
         method: 'DELETE',
+      })
+        .then((response) => console.log(response))
+        .catch((err) => setError(err))
+        .finally(() => setIsLoading(false));
+    },
+  };
+};
+
+// ref: https://stackoverflow.com/questions/40284338/javascript-fetch-delete-and-put-requests
+export const useEditData = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
+  return {
+    pending: isLoading,
+    error,
+    run: (url, id, data) => {
+      setIsLoading(true);
+      fetch(url + `/${id}`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+          data,
+        }),
+        headers: { 'Content-Type': 'application/json' },
       })
         .then((response) => console.log(response))
         .catch((err) => setError(err))
