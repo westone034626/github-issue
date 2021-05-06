@@ -4,10 +4,16 @@ const LabelItemControllerWrapper = styled.div`
   display: flex;
 `;
 
-const LabelItemController = ({ onDeleteBtnClick }) => {
+const LabelItemController = ({ onEditBtnClick, onDeleteBtnClick }) => {
   return (
     <LabelItemControllerWrapper>
-      <button>Edit</button>
+      <button
+        onClick={() => {
+          onEditBtnClick();
+        }}
+      >
+        Edit
+      </button>
       <button
         onClick={() => {
           onDeleteBtnClick();

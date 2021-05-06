@@ -4,6 +4,7 @@ import LabelItemController from './LabelItemController';
 import Label from './Label';
 import { useToggle } from '../../hooks';
 import Modal from '../Modal';
+import LabelEditor from '../LabelForm/LabelEditor';
 
 const LabelItemWrapper = styled.div`
   display: flex;
@@ -26,9 +27,11 @@ const LabelItem = ({
   labelName,
   buttonColor,
   fontColor,
+  onEditBtnClick,
   onDeleteBtnClick,
 }) => {
   const [isDelBtnClick, setIsDelBtnClick] = useToggle(false);
+  const [isEditBtnClick, setIsEditBtnClick] = useToggle(false);
   return (
     <>
       {isDelBtnClick && (
@@ -38,17 +41,30 @@ const LabelItem = ({
           onCancel={setIsDelBtnClick}
         />
       )}
-      <LabelItemWrapper>
-        <Label
-          message={labelName}
-          fontColor={fontColor}
-          buttonColor={buttonColor}
+      {isEditBtnClick ? (
+        <LabelEditor
+          onSubmit={onEditBtnClick}
+          onCancel={setIsEditBtnClick}
+          labelName={labelName}
+          labelColor={buttonColor}
+          labelDesc={message}
         />
-        <LabelItemSubWrapper>
-          <LabelDesc message={message} />
-          <LabelItemController onDeleteBtnClick={setIsDelBtnClick} />
-        </LabelItemSubWrapper>
-      </LabelItemWrapper>
+      ) : (
+        <LabelItemWrapper>
+          <Label
+            message={labelName}
+            fontColor={fontColor}
+            buttonColor={buttonColor}
+          />
+          <LabelItemSubWrapper>
+            <LabelDesc message={message} />
+            <LabelItemController
+              onEditBtnClick={setIsEditBtnClick}
+              onDeleteBtnClick={setIsDelBtnClick}
+            />
+          </LabelItemSubWrapper>
+        </LabelItemWrapper>
+      )}
     </>
   );
 };

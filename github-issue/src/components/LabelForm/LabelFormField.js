@@ -1,6 +1,5 @@
 import { getRandomColor } from '../../utils';
 import styled from 'styled-components';
-import { usePostData } from '../../hooks';
 import { useState } from 'react';
 import LabelInputField from './LabelInputField';
 import LabelColorField from './LabelColorField';
@@ -78,7 +77,7 @@ const LabelFormField = ({
             style={{
               marginLeft: '5px',
               color: 'white',
-              backgroundColor: 'darkgreen',
+              backgroundColor: 'green',
               opacity: name === '' ? '0.1' : '1',
             }}
             onClick={async (e) => {
