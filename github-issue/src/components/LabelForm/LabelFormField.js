@@ -82,29 +82,22 @@ const LabelFormField = ({
               backgroundColor: 'green',
               opacity: name === '' ? '0.1' : '1',
             }}
-            onClick={
+            onClick={async (e) => {
+              e.preventDefault();
               labelId
-                ? async (e) => {
-                    e.preventDefault();
-                    await write(url, labelId, {
-                      name,
-                      description,
-                      color,
-                    });
-                    await refresh(url);
-                    resetFormField();
-                  }
-                : async (e) => {
-                    e.preventDefault();
-                    await write(url, {
-                      name,
-                      description,
-                      color,
-                    });
-                    await refresh(url);
-                    resetFormField();
-                  }
-            }
+                ? await write(url, labelId, {
+                    name,
+                    description,
+                    color,
+                  })
+                : await write(url, {
+                    name,
+                    description,
+                    color,
+                  });
+              await refresh(url);
+              resetFormField();
+            }}
           />
         </div>
       </LabelFormWrapper>
