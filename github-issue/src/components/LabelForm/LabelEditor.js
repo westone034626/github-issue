@@ -15,17 +15,22 @@ const LabelEditorWrapper = styled.div`
 `;
 
 const LabelEditor = ({
+  labelId = undefined,
   onSubmit,
   onCancel,
-  labelName = 'Label preview',
+  labelName = '',
   labelColor = 'black',
   labelDesc = '',
 }) => {
   const [previewLabelName, setPreviewLabelName] = useState(labelName);
   const [previewColor, setPreviewColor] = useState(labelColor);
+  const [previewDescription, setPreviewDescription] = useState(labelDesc);
   return (
     <LabelEditorWrapper>
-      <Label message={previewLabelName} buttonColor={previewColor} />
+      <Label
+        message={previewLabelName === '' ? 'Label preview' : previewLabelName}
+        buttonColor={previewColor === '' ? 'black' : previewColor}
+      />
       <LabelFormField
         onSubmit={onSubmit}
         onCancel={onCancel}
@@ -33,6 +38,9 @@ const LabelEditor = ({
         setName={setPreviewLabelName}
         color={previewColor}
         setColor={setPreviewColor}
+        description={previewDescription}
+        setDescription={setPreviewDescription}
+        labelId={labelId}
       />
     </LabelEditorWrapper>
   );

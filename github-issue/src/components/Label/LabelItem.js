@@ -23,6 +23,7 @@ const LabelItemSubWrapper = styled.div`
 `;
 
 const LabelItem = ({
+  id,
   message,
   labelName,
   buttonColor,
@@ -43,6 +44,7 @@ const LabelItem = ({
       )}
       {isEditBtnClick ? (
         <LabelEditor
+          labelId={id}
           onSubmit={onEditBtnClick}
           onCancel={setIsEditBtnClick}
           labelName={labelName}

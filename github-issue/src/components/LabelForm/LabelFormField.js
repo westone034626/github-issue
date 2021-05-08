@@ -1,6 +1,5 @@
 import { getRandomColor } from '../../utils';
 import styled from 'styled-components';
-import { useState } from 'react';
 import LabelInputField from './LabelInputField';
 import LabelColorField from './LabelColorField';
 import LabelButtonField from './LabelButtonField';
@@ -22,16 +21,19 @@ const LabelFormField = ({
   onCancel,
   name,
   setName,
-  color,
+  color = 'black',
   setColor,
+  description,
+  setDescription,
+  labelId,
 }) => {
-  const { url, post, refresh } = onSubmit;
-  const [description, setDescription] = useState('');
   const resetFormField = () => {
     setName(() => '');
     setDescription(() => '');
-    setColor(() => 'black');
+    setColor(() => '');
   };
+  const { url, write, refresh } = onSubmit;
+
   return (
     <LabelForm>
       <LabelFormWrapper>
@@ -72,7 +74,7 @@ const LabelFormField = ({
             disabled={false}
           />
           <LabelButtonField
-            label="create label"
+            label={labelId ? 'edit label' : 'create label'}
             disabled={name === '' ? true : false}
             style={{
               marginLeft: '5px',
@@ -80,12 +82,29 @@ const LabelFormField = ({
               backgroundColor: 'green',
               opacity: name === '' ? '0.1' : '1',
             }}
-            onClick={async (e) => {
-              e.preventDefault();
-              await post(url, { name, description, color });
-              resetFormField();
-              await refresh(url);
-            }}
+            onClick={
+              labelId
+                ? async (e) => {
+                    e.preventDefault();
+                    await write(url, labelId, {
+                      name,
+                      description,
+                      color,
+                    });
+                    await refresh(url);
+                    resetFormField();
+                  }
+                : async (e) => {
+                    e.preventDefault();
+                    await write(url, {
+                      name,
+                      description,
+                      color,
+                    });
+                    await refresh(url);
+                    resetFormField();
+                  }
+            }
           />
         </div>
       </LabelFormWrapper>

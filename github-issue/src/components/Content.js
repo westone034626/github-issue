@@ -23,7 +23,7 @@ const Content = ({ tab, isNewBtnClick, onCancelBtnClick }) => {
     <>
       {isNewBtnClick && (
         <LabelEditor
-          onSubmit={{ url: REQUEST_URL, post: postData, refresh: fetchData }}
+          onSubmit={{ url: REQUEST_URL, write: postData, refresh: fetchData }}
           onCancel={onCancelBtnClick}
         />
       )}
@@ -37,7 +37,11 @@ const Content = ({ tab, isNewBtnClick, onCancelBtnClick }) => {
               labelList={data}
               url={REQUEST_URL}
               onRefresh={fetchData}
-              onSubmit={editData}
+              onSubmit={{
+                url: REQUEST_URL,
+                write: editData,
+                refresh: fetchData,
+              }}
               onDelete={deleteData}
             />
           ) : (

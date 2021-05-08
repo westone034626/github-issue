@@ -14,11 +14,7 @@ const LabelContent = styled.p`
   font-weight: bold;
 `;
 
-const Label = ({
-  buttonColor = 'black',
-  fontColor = 'white',
-  message = 'Label preview',
-}) => {
+const Label = ({ buttonColor, fontColor = 'white', message }) => {
   return (
     <LabelWrapper buttonColor={buttonColor}>
       <LabelContent fontColor={fontColor}>{message}</LabelContent>
