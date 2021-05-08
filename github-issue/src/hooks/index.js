@@ -75,9 +75,9 @@ export const useEditData = () => {
     run: (url, id, data) => {
       setIsLoading(true);
       fetch(url + `/${id}`, {
-        method: 'DELETE',
+        method: 'PATCH',
         body: JSON.stringify({
-          data,
+          ...data,
         }),
         headers: { 'Content-Type': 'application/json' },
       })
