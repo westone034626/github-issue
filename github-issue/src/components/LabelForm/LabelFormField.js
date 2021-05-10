@@ -95,6 +95,7 @@ const LabelFormField = ({
                     description,
                     color,
                   });
+              onCancel();
               await refresh(url);
               resetFormField();
             }}
