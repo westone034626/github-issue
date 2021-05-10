@@ -11,17 +11,25 @@ export const useToggle = (initialState = false) => {
 export const useFetchData = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
   return {
     data,
     pending: isLoading,
-    run: (url) => {
-      setIsLoading(true);
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-          setData(data.reverse());
-        })
-        .finally(() => setIsLoading(false));
+    run: async (url) => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          setError(`response error. status code : ${response.status}`);
+          return;
+        }
+        const data = await response.json();
+        setData(data.reverse());
+      } catch (e) {
+        console.error('exeception occured!!', e.message);
+        setError(e.message);
+      } finally {
+        setIsLoading(false);
+      }
     },
   };
 };
@@ -32,16 +40,24 @@ export const usePostData = () => {
   return {
     pending: isLoading,
     error,
-    run: (url, data) => {
-      setIsLoading(true);
-      fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
-      })
-        .then((response) => console.log(response))
-        .catch((err) => setError(err))
-        .finally(() => setIsLoading(false));
+    run: async (url, data) => {
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (!response.ok) {
+          setError(`response error. status code : ${response.status}`);
+          return;
+        }
+        console.log('response: ', response);
+      } catch (e) {
+        console.err(e.message);
+        setError(e.message);
+      } finally {
+        setIsLoading(false);
+      }
     },
   };
 };
@@ -53,14 +69,22 @@ export const useDeleteData = () => {
   return {
     pending: isLoading,
     error,
-    run: (url, id) => {
-      setIsLoading(true);
-      fetch(url + `/${id}`, {
-        method: 'DELETE',
-      })
-        .then((response) => console.log(response))
-        .catch((err) => setError(err))
-        .finally(() => setIsLoading(false));
+    run: async (url, id) => {
+      try {
+        const response = await fetch(url + `/${id}`, {
+          method: 'DELETE',
+        });
+        if (!response.ok) {
+          setError(`response error. status code : ${response.status}`);
+          return;
+        }
+        console.log('response: ', response);
+      } catch (e) {
+        console.err(e.message);
+        setError(e.message);
+      } finally {
+        setIsLoading(false);
+      }
     },
   };
 };
@@ -72,18 +96,26 @@ export const useEditData = () => {
   return {
     pending: isLoading,
     error,
-    run: (url, id, data) => {
-      setIsLoading(true);
-      fetch(url + `/${id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      })
-        .then((response) => console.log(response))
-        .catch((err) => setError(err))
-        .finally(() => setIsLoading(false));
+    run: async (url, id, data) => {
+      try {
+        const response = await fetch(url + `/${id}`, {
+          method: 'PATCH',
+          body: JSON.stringify({
+            ...data,
+          }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+        if (!response.ok) {
+          setError(`response error. status code : ${response.status}`);
+          return;
+        }
+        console.log('response: ', response);
+      } catch (e) {
+        console.error(e.message);
+        setError(e.message);
+      } finally {
+        setIsLoading(false);
+      }
     },
   };
 };
