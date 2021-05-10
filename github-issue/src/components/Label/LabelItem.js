@@ -38,7 +38,10 @@ const LabelItem = ({
       {isDelBtnClick && (
         <Modal
           msg="정말 삭제하시겠습니까?"
-          onConfirm={onDeleteBtnClick}
+          onConfirm={() => {
+            onDeleteBtnClick();
+            setIsDelBtnClick();
+          }}
           onCancel={setIsDelBtnClick}
         />
       )}
