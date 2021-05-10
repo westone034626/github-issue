@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import LabelInputField from './LabelInputField';
 import LabelColorField from './LabelColorField';
 import LabelButtonField from './LabelButtonField';
+import { useContext } from 'react';
+import { MainContext } from '../Layout/Main';
 
 const LabelForm = styled.form`
   width: 100%;
@@ -33,7 +35,7 @@ const LabelFormField = ({
     setColor(() => '');
   };
   const { url, write, refresh } = onSubmit;
-
+  const { setIsNewBtnClick } = useContext(MainContext);
   return (
     <LabelForm>
       <LabelFormWrapper>
@@ -95,7 +97,8 @@ const LabelFormField = ({
                     description,
                     color,
                   });
-              onCancel();
+              // onCancel();
+              setIsNewBtnClick();
               await refresh(url);
               resetFormField();
             }}
